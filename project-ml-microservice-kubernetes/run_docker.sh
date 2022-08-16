@@ -4,7 +4,7 @@
 
 # Step 1:
 # Build image and add a descriptive tag
-docker build -t nosa/app-py--v1 .
+docker build -t nosa/app-py:v1 .
 
 # Step 2: 
 # List docker images
@@ -12,4 +12,4 @@ docker image ls
 
 # Step 3: 
 # Run flask app
-docker run -it -p 8000:80 nosa/app-py--v1
+docker run -it -p 8000:80 nosa/app-py:v1
