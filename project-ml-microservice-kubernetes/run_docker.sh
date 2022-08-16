@@ -12,4 +12,4 @@ docker image ls
 
 # Step 3: 
 # Run flask app
-docker run -it -p 8000:80 nosa/flaskapp:v8
+docker run -it -p 8000:80 nosa/app-py--v1
