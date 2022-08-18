@@ -1,1 +1,52 @@
 <paste log output from Kubernetes-mediated prediction, here>
+ubuntu@ip-172-31-15-23:~/DevOps_Microservices/project-ml-microservice-kubernetes$ sudo ./run_kubernetes.sh
+Error from server (AlreadyExists): pods "app" already exists
+NAME   READY   STATUS    RESTARTS   AGE
+app    1/1     Running   0          32m
+Forwarding from 127.0.0.1:8000 -> 80
+Forwarding from [::1]:8000 -> 80
+Handling connection for 8000
+^C
+ubuntu@ip-172-31-15-23:~/DevOps_Microservices/project-ml-microservice-kubernetes$ sudo minikube kubectl -- logs app
+Error caching kubectl: failed to acquire lock "/home/ubuntu/.minikube/cache/linux/amd64/v1.24.3/kubectl.lock": {Name:mk258593fc44b35b0bb345716248edae471c040d Clock:{} Delay:500ms Timeout:1m0s Cancel:<nil>}: unable to open /tmp/juju-mk258593fc44b35b0bb345716248edae471c040d: permission denied
+ubuntu@ip-172-31-15-23:~/DevOps_Microservices/project-ml-microservice-kubernetes$ sudo chown root:root /tmp/juju-mk*
+ubuntu@ip-172-31-15-23:~/DevOps_Microservices/project-ml-microservice-kubernetes$ sudo minikube kubectl -- logs app
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 108-807-535
+[2022-08-18 11:31:34,514] INFO in app: JSON payload:
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2022-08-18 11:31:34,525] INFO in app: Inference payload DataFrame:
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2022-08-18 11:31:34,534] INFO in app: Scaling Payload:
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2022-08-18 11:31:34,537] INFO in app: Current prediction value is: [20.35373177134412]
+127.0.0.1 - - [18/Aug/2022 11:31:34] "POST /predict HTTP/1.1" 200 -
+[2022-08-18 11:35:41,044] INFO in app: JSON payload:
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2022-08-18 11:35:41,055] INFO in app: Inference payload DataFrame:
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2022-08-18 11:35:41,065] INFO in app: Scaling Payload:
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2022-08-18 11:35:41,069] INFO in app: Current prediction value is: [20.35373177134412]
+127.0.0.1 - - [18/Aug/2022 11:35:41] "POST /predict HTTP/1.1" 200 -
+[2022-08-18 11:52:47,290] INFO in app: JSON payload:
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2022-08-18 11:52:47,300] INFO in app: Inference payload DataFrame:
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2022-08-18 11:52:47,308] INFO in app: Scaling Payload:
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2022-08-18 11:52:47,311] INFO in app: Current prediction value is: [20.35373177134412]
+127.0.0.1 - - [18/Aug/2022 11:52:47] "POST /predict HTTP/1.1" 200 -
