@@ -30,3 +30,4 @@ lint:
         pylint --disable=R,C,W1203,W1202 project-ml-microservice-kubernetes/app.py
 
 all: install lint test
+      
